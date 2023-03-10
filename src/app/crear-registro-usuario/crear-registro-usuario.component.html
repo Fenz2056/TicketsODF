@@ -1,0 +1,160 @@
+<div class="logo text-center">
+    <img width="200" src="assets/logoodef.png" alt="">
+</div>
+
+<div class="Formulario-Registro m-3 p-4">
+    <form [formGroup]="EsFormularioRegistro">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombres del cliente</mat-label>
+                    <input type="text" class="form-control" formControlName="EsNombresClientes" required formControlName ="EsNombresClientes" matInput placeholder="">              
+                      <div *ngIf= "EsFormularioRegistro.get('EsNombresClientes')?.touched && EsFormularioRegistro.get('EsNombresClientes')?.errors?.['required']" 
+                         class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsNombresClientes')?.touched && EsFormularioRegistro.get('EsNombresClientes')?.errors?.['minlength']" 
+                         class="alert-danger">El nombre del cliente debe contener más de {{EsFormularioRegistro.get('EsNombresClientes')?.errors?.['minlength']?.requiredLength}} caracteres</div>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellidos del cliente</mat-label>
+                    <input type="text" class="form-control" formControlName="EsApellidosClientes" required formControlName ="EsApellidosClientes" matInput placeholder="">              
+                      <div *ngIf= "EsFormularioRegistro.get('EsApellidosClientes')?.touched && EsFormularioRegistro.get('EsApellidosClientes')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsApellidosClientes')?.touched && EsFormularioRegistro.get('EsApellidosClientes')?.errors?.['minlength']" 
+                        class="alert-danger">El apellido del cliente debe contener más de {{EsFormularioRegistro.get('EsApellidosClientes')?.errors?.['minlength']?.requiredLength}} caracteres</div>
+                </mat-form-field> 
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Número de Identidad del cliente</mat-label>
+                    <input type="text" class="form-control" formControlName="EsNumeroIdentidadCliente" required formControlName ="EsNumeroIdentidadCliente" matInput placeholder="">
+                      <div *ngIf= "EsFormularioRegistro.get('EsNumeroIdentidadCliente')?.touched && EsFormularioRegistro.get('EsNumeroIdentidadCliente')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsNumeroIdentidadCliente')?.touched && EsFormularioRegistro.get('EsNumeroIdentidadCliente')?.errors?.['pattern']" 
+                        class="alert-danger">El número de identidad del cliente debe de estar en un formato correcto</div>              
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>E-mail del cliente</mat-label>
+                    <input type="text" class="form-control" formControlName="EsEmailCliente" required formControlName ="EsEmailCliente" matInput placeholder=""> 
+                      <div *ngIf= "EsFormularioRegistro.get('EsEmailCliente')?.touched && EsFormularioRegistro.get('EsEmailCliente')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsEmailCliente')?.touched && EsFormularioRegistro.get('EsEmailCliente')?.errors?.['pattern']" 
+                        class="alert-danger">El correo electrónico debe de estar en un formato correcto</div>     
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Número de teléfono del cliente</mat-label>
+                    <input type="text" class="form-control" formControlName="EsTelefonoCliente" required formControlName ="EsTelefonoCliente" matInput placeholder="Ejemplo +504 xxxx-xxxx">
+                      <div *ngIf= "EsFormularioRegistro.get('EsTelefonoCliente')?.touched && EsFormularioRegistro.get('EsTelefonoCliente')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsTelefonoCliente')?.touched && EsFormularioRegistro.get('EsTelefonoCliente')?.errors?.['pattern']" 
+                        class="alert-danger">El teléfono del cliente debe de estar en un formato correcto</div>              
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Dirección del cliente</mat-label>
+                    <textarea  type="text" class="form-control" formControlName="EsDireccionCliente" required formControlName ="EsDireccionCliente" matInput></textarea>
+                      <div *ngIf= "EsFormularioRegistro.get('EsDireccionCliente')?.touched && EsFormularioRegistro.get('EsDireccionCliente')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Localización de la Agencia</mat-label>
+                  <mat-select formControlName="EsLocalizacionAgenciaActual" >
+                    <mat-option *ngFor="let EsMunicipios of EsMunicipioAgencia" [value]="EsMunicipios">
+                      {{EsMunicipios}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Código de la Agencia Actual</mat-label>
+                    <input type="text" class="form-control" formControlName="EsCodigoAgencia" required formControlName ="EsCodigoAgencia" matInput placeholder="">
+                      <div *ngIf= "EsFormularioRegistro.get('EsCodigoAgencia')?.touched && EsFormularioRegistro.get('EsCodigoAgencia')?.errors?.['required']" 
+                         class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsCodigoAgencia')?.touched && EsFormularioRegistro.get('EsCodigoAgencia')?.errors?.['minlength']" 
+                         class="alert-danger">El código de la agencia debe contener más de {{EsFormularioRegistro.get('EsCodigoAgencia')?.errors?.['minlength']?.requiredLength}} caracteres</div>             
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre del Oficial de Atención al Usuario Financiero</mat-label>
+                    <input type="text" class="form-control"  formControlName="EsNombrePersonalODEF" required formControlName ="EsNombrePersonalODEF" matInput placeholder="">  
+                      <div *ngIf= "EsFormularioRegistro.get('EsNombrePersonalODEF')?.touched && EsFormularioRegistro.get('EsNombrePersonalODEF')?.errors?.['required']" 
+                        class="alert-danger">Este campo debe de ser llenado</div>
+                      <div *ngIf= "EsFormularioRegistro.get('EsNombrePersonalODEF')?.touched && EsFormularioRegistro.get('EsNombrePersonalODEF')?.errors?.['minlength']" 
+                        class="alert-danger">El nombre del personal debe contener más de {{EsFormularioRegistro.get('EsNombrePersonalODEF')?.errors?.['minlength']?.requiredLength}} caracteres</div>         
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label id="Boton-Radio-Registro-Formato-label">¿El cliente es una persona jurídica?</label>
+                <mat-radio-group formControlName="EsClienteJuridico" class="Boton-Radio-Registro-Formato">
+                  <mat-radio-button class="Boton-Radio-Registro-PersonaJuridica" *ngFor="let EsPersonJuridica of EsClientePersonaJuridica" [value]="EsPersonJuridica">
+                    {{EsPersonJuridica}}           
+                  </mat-radio-button>
+                </mat-radio-group>  
+            </div>  
+            <div class="row EsContenedor mt-4">
+                <mat-toolbar color="primary">
+                    <span>Creación del reclamo</span>
+                    <span class="example-spacer"></span>
+                   </mat-toolbar>
+            </div>
+            <div class="col-md-6 mt-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecciona la fecha</mat-label>
+                    <input formControlName="EsFechaActual" matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/AAAA</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>                    
+            </div> 
+
+          <div class="col-md-6 mt-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo del Reclamo</mat-label>
+              <mat-select formControlName="EsTipoReclamoCliente" >
+                <mat-option *ngFor="let EsReclamo of EsTipoReclamo" [value]="EsReclamo">
+                  {{EsReclamo}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> 
+              <mat-form-field class="example-full-width" >
+                <mat-label>Contenido del reclamo</mat-label>
+                <textarea formControlName="EsComentarioCliente" matInput placeholder=""></textarea>
+            </mat-form-field>
+        </div>   
+        <div class="col-md-6 mt-3">
+          <label id="Boton-Radio-Registro-Formato-label">¿Provee documentación que respalde el reclamo?</label>
+          <mat-radio-group type="text" class="form-control" formControlName="EsDocumnetacionCliente" class="Boton-Radio-Registro-Formato">
+            <mat-radio-button class="Boton-Radio-Registro-PersonaJuridica" *ngFor="let EsDocumentacion of EsClienteDocumentoRespaldo" [value]="EsDocumentacion">
+              {{EsDocumentacion}}           
+            </mat-radio-button>
+          </mat-radio-group>     
+      <div class="col-md-6 mt-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>De ser sí la respuesta, favor de describir la misma</mat-label>
+          <textarea type="text" class="form-control" formControlName="EsDocumentacionReclamo" matInput placeholder=""></textarea>
+        </mat-form-field>
+    </div>  
+      </div> 
+
+      <div class="col-md-6 mt-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Comentario respecto a la queja</mat-label>
+          <textarea type="text" class="form-control" formControlName="EsComentarioEmpleado"  matInput placeholder=""></textarea>
+        </mat-form-field>
+    </div>   
+        
+        </div>
+        <button (click)="Submit()" class="mt-4" mat-raised-button color="accent">Subir Datos</button>
+    </form>
+
+</div>
